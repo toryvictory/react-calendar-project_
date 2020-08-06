@@ -1,24 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Week.module.scss';
-import Date from './../CalendarDate';
+import * as DateFns from 'date-fns';
+import CalendarDate from "./../CalendarDate";
 
 const Week = props => {
+    const {date} = props;
+
+    const getWeekDays = () => {
+        const weekDays = [];
+        for (let i = 0; i < 7; i++) {
+            const newDate = DateFns.add(date, {days: i,});
+            weekDays.push(<td key={newDate}><CalendarDate date={newDate}/></td>);
+        }
+        return weekDays;
+    }
+
     return (
         <tr>
-            <td><Date date={1}/></td>
-            <td><Date date={2}/></td>
-            <td><Date date={3}/></td>
-            <td><Date date={4}/></td>
-            <td><Date date={5}/></td>
-            <td><Date date={6}/></td>
-            <td><Date date={7}/></td>
+            {getWeekDays()}
         </tr>
     );
 };
 
 Week.propTypes = {
-
+    date: PropTypes.instanceOf(Date).isRequired,
 };
 
 export default Week;

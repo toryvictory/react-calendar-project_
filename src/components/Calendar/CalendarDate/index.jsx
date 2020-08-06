@@ -1,18 +1,20 @@
 import React from 'react';
-import PropTypes, {checkPropTypes} from 'prop-types';
+import PropTypes from 'prop-types';
 import styles from './CalendarDate.module.scss';
+import * as DateFns from 'date-fns';
 
 const CalendarDate = props => {
     const {date} = props;
+
     return (
         <span>
-            {date}
+            {DateFns.format(date, 'dd')}
         </span>
     );
 };
 
 CalendarDate.propTypes = {
-    date: PropTypes.number.isRequired,
+    date: PropTypes.instanceOf(Date).isRequired,
 };
 
 export default CalendarDate;
