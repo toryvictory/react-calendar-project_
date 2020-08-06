@@ -17,4 +17,9 @@ CalendarDate.propTypes = {
     date: PropTypes.instanceOf(Date).isRequired,
 };
 
+CalendarDate.defaultProps = {
+    isCurrentDay: false,
+    isCurrentMonth: true,
+};
+
 export default CalendarDate;

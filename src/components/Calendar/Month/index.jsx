@@ -7,6 +7,7 @@ import * as DateFns from 'date-fns';
 const Month = props => {
     const {date} = props;
 
+
     const getWeeks = () => {
         const weeks = [];
         const weekStartDays = DateFns.eachWeekOfInterval({
