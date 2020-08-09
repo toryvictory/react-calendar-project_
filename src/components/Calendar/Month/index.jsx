@@ -1,29 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Month.module.scss';
-import Week from "../Week";
-import * as DateFns from 'date-fns';
+import Week from "./Week";
 
 const Month = props => {
-    const {date} = props;
+    const {children} = props;
 
-
-    const getWeeks = () => {
-        const weeks = [];
-        const weekStartDays = DateFns.eachWeekOfInterval({
-            start: DateFns.startOfMonth(date),
-            end: DateFns.endOfMonth(date),
-        })
-        for (const start of weekStartDays) {
-            weeks.push(<Week date={start} key={start}/>);
-        }
-
-        return weeks;
-    };
 
     return (
         <table>
-            <caption>{DateFns.format(date, 'MMMM yyyy')}</caption>
             <thead>
             <tr>
                 <th>S</th>
@@ -36,15 +21,14 @@ const Month = props => {
             </tr>
             </thead>
             <tbody>
-            {getWeeks()}
+            {children}
             </tbody>
         </table>
     );
 };
 
 Month.propTypes = {
-    date: PropTypes.instanceOf(Date).isRequired,
-}
-
+    children: PropTypes.arrayOf(PropTypes.instanceOf(Week)).isRequired,
+};
 
 export default Month;

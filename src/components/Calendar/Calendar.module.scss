@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+}
+
+.calendarDatePage {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dayOfWeek {
+  color: red;
+}
+
+.date {
+  font-size: 100px;
+}
+
+.monthHeader {
+  display: flex;
+  justify-content: space-between;
+
+  margin: 20px;
+}
